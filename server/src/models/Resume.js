@@ -31,6 +31,12 @@ const projectSchema = new Schema(
 
 const resumeSchema = new Schema(
   {
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+      index: true
+    },
     name: { type: String, required: true, trim: true },
     email: { type: String, trim: true },
     phone: { type: String, trim: true },
@@ -41,6 +47,16 @@ const resumeSchema = new Schema(
     projects: { type: [projectSchema], default: [] },
     professionalSummary: { type: String, trim: true },
     experienceHighlights: { type: [{ type: String }], default: [] },
+    template: {
+      type: String,
+      enum: ['modern', 'classic', 'minimalist', 'creative', 'executive'],
+      default: 'modern'
+    },
+    templateTheme: {
+      type: String,
+      enum: ['blue', 'green', 'red', 'purple', 'gray'],
+      default: 'blue'
+    },
     optimizedResume: {
       type: Schema.Types.Mixed,
       default: {}

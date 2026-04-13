@@ -11,20 +11,28 @@ const createResume = async (payload) => {
   return resume;
 };
 
-const getAllResumes = async () => Resume.find().sort({ createdAt: -1 });
+const getAllResumes = async (userId) => {
+  return Resume.find({ userId }).sort({ createdAt: -1 });
+};
 
-const getResumeById = async (id) => {
-  const resume = await Resume.findById(id);
+const getResumeById = async (id, userId) => {
+  const resume = await Resume.findOne({ _id: id, userId });
   if (!resume) {
     throw new ApiError(404, 'Resume not found');
   }
   return resume;
 };
 
-const updateResume = async (id, payload) => {
+const updateResume = async (id, payload, userId) => {
+  // Check if resume belongs to user
+  const resume = await Resume.findOne({ _id: id, userId });
+  if (!resume) {
+    throw new ApiError(404, 'Resume not found');
+  }
+
   const aiResult = await generateResumeContent(payload);
 
-  const resume = await Resume.findByIdAndUpdate(
+  const updatedResume = await Resume.findByIdAndUpdate(
     id,
     {
       ...payload,
@@ -33,15 +41,11 @@ const updateResume = async (id, payload) => {
     { new: true, runValidators: true }
   );
 
-  if (!resume) {
-    throw new ApiError(404, 'Resume not found');
-  }
-
-  return resume;
+  return updatedResume;
 };
 
-const deleteResume = async (id) => {
-  const deleted = await Resume.findByIdAndDelete(id);
+const deleteResume = async (id, userId) => {
+  const deleted = await Resume.findOneAndDelete({ _id: id, userId });
   if (!deleted) {
     throw new ApiError(404, 'Resume not found');
   }

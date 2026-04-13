@@ -1,6 +1,10 @@
 :root {
-  --primary-color: #6366f1;
-  --secondary-color: #ec4899;
+  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --accent-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --neutral-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --primary-color: #667eea;
+  --secondary-color: #764ba2;
   --success-color: #10b981;
   --warning-color: #f59e0b;
   --danger-color: #ef4444;
@@ -23,8 +27,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--light-bg);
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   color: var(--text-dark);
+  min-height: 100vh;
 }
 
 .app {
@@ -52,8 +57,8 @@ button {
 }
 
 button:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgba(102, 126, 234, 0.3);
 }
 
 button:disabled {
@@ -62,36 +67,45 @@ button:disabled {
 }
 
 .btn-submit {
-  background-color: var(--primary-color);
+  background: var(--primary-gradient);
   color: white;
   padding: 0.75rem 1.5rem;
+  border-radius: 0.75rem;
 }
 
 .btn-submit:hover:not(:disabled) {
-  background-color: #4f46e5;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+  transform: translateY(-2px);
 }
 
 .btn-cancel {
-  background-color: var(--light-bg);
+  background: white;
   color: var(--text-dark);
   padding: 0.75rem 1.5rem;
-  border: 1px solid var(--border-color);
+  border: 2px solid #e2e8f0;
+  border-radius: 0.75rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 .btn-cancel:hover {
-  background-color: var(--border-color);
+  border-color: var(--primary-color);
+  background: rgba(102, 126, 234, 0.05);
 }
 
 .btn-add {
-  background-color: var(--success-color);
+  background: var(--accent-gradient);
   color: white;
   padding: 0.5rem 1rem;
   font-size: 0.9rem;
   margin-top: 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
 }
 
 .btn-add:hover {
-  background-color: #059669;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(79, 172, 254, 0.4);
 }
 
 .loading {
@@ -99,18 +113,44 @@ button:disabled {
   padding: 3rem;
   font-size: 1.1rem;
   color: var(--text-light);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
 }
 
 .error {
-  background-color: #fee2e2;
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
   color: var(--danger-color);
   padding: 1rem;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   margin: 1rem 0;
   border-left: 4px solid var(--danger-color);
+  animation: slideIn 0.4s ease;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .success {
+  background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+  color: var(--success-color);
+  padding: 1rem;
+  border-radius: 0.75rem;
+  margin: 1rem 0;
+  border-left: 4px solid var(--success-color);
+  animation: slideIn 0.4s ease;
+}
   background-color: #dcfce7;
   color: var(--success-color);
   padding: 1rem;

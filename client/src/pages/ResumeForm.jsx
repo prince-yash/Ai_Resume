@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useResume } from '../hooks/useResume';
+import TemplateSelector from '../components/TemplateSelector';
 import '../styles/ResumeForm.css';
 
 function ResumeForm() {
@@ -16,7 +17,9 @@ function ResumeForm() {
     education: [{ school: '', degree: '', field: '', year: '' }],
     skills: [],
     experience: [{ company: '', position: '', duration: '', description: '' }],
-    projects: [{ title: '', description: '', technologies: '' }]
+    projects: [{ title: '', description: '', technologies: '' }],
+    template: 'modern',
+    templateTheme: 'blue'
   });
 
   const [skillInput, setSkillInput] = useState('');
@@ -116,6 +119,13 @@ function ResumeForm() {
   return (
     <div className="resume-form-container">
       <h2>{id ? 'Edit Resume' : 'Create Resume'}</h2>
+      
+      <TemplateSelector 
+        selectedTemplate={formData.template}
+        selectedTheme={formData.templateTheme}
+        onTemplateChange={(template) => setFormData(prev => ({ ...prev, template }))}
+        onThemeChange={(theme) => setFormData(prev => ({ ...prev, templateTheme: theme }))}
+      />
       
       <form onSubmit={handleSubmit} className="resume-form">
         {/* Personal Info */}

@@ -3,6 +3,7 @@ const { body } = require('express-validator');
 
 const resumeController = require('../controllers/resumeController');
 const validateRequest = require('../middlewares/validateRequest');
+const { protect } = require('../middlewares/auth');
 
 const router = express.Router();
 
@@ -13,6 +14,9 @@ const resumeValidations = [
   body('experience').isArray().withMessage('Experience must be an array'),
   body('projects').isArray().withMessage('Projects must be an array')
 ];
+
+// All resume routes require authentication
+router.use(protect);
 
 router
   .route('/')
