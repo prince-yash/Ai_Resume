@@ -114,8 +114,10 @@
   z-index: 10;
   width: 100%;
   max-width: 500px;
+  margin: 0 auto;
   animation: signup-zoom-in 0.9s cubic-bezier(0.34, 1.56, 0.64, 1);
   perspective: 1000px;
+  flex-shrink: 0;
 }
 
 @keyframes signup-zoom-in {
@@ -366,16 +368,18 @@
 
 .signup-input-icon {
   position: absolute;
-  left: 16px;
+  left: 14px;
   color: #16a34a;
   font-size: 17px;
   z-index: 5;
   transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  pointer-events: none;
+  display: none;
 }
 
 .signup-input {
   width: 100%;
-  padding: 15px 16px 15px 50px;
+  padding: 15px 16px;
   border: 2.5px solid #d1fae5;
   border-radius: 14px;
   font-size: 14px;
