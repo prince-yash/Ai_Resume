@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { FaUser, FaEnvelope, FaLock, FaCheckCircle } from 'react-icons/fa';
 import { useAuth } from '../contexts/AuthContext';
-import '../styles/Auth.css';
+import '../styles/Signup.css';
 
 function Signup() {
   const [name, setName] = useState('');
@@ -46,78 +47,126 @@ function Signup() {
   };
 
   return (
-    <div className="auth-container">
-      <div className="auth-card">
-        <h1>Create Account</h1>
-        <p className="auth-subtitle">Join AI Resume Builder today</p>
+    <div className="signup-container">
+      <div className="signup-background">
+        <div className="signup-blob signup-blob-1"></div>
+        <div className="signup-blob signup-blob-2"></div>
+        <div className="signup-blob signup-blob-3"></div>
+      </div>
 
-        {error && <div className="auth-error">{error}</div>}
-
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <label htmlFor="name">Full Name</label>
-            <input
-              type="text"
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Your full name"
-              required
-              disabled={loading}
-            />
+      <div className="signup-content">
+        <div className="signup-card">
+          <div className="signup-header">
+            <div className="signup-icon-circle">
+              <FaCheckCircle className="signup-check-icon" />
+            </div>
+            <h1>Join Us Today</h1>
+            <p className="signup-subtitle">Create your account and start building amazing resumes</p>
           </div>
 
-          <div className="form-group">
-            <label htmlFor="email">Email Address</label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="your@email.com"
-              required
-              disabled={loading}
-            />
+          {error && (
+            <div className="signup-error">
+              <span>{error}</span>
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="signup-form">
+            <div className="signup-input-group">
+              <label htmlFor="name">Full Name</label>
+              <div className="signup-input-wrapper">
+                <FaUser className="signup-input-icon" />
+                <input
+                  type="text"
+                  id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Enter your full name"
+                  required
+                  disabled={loading}
+                  className="signup-input"
+                />
+              </div>
+            </div>
+
+            <div className="signup-input-group">
+              <label htmlFor="email">Email Address</label>
+              <div className="signup-input-wrapper">
+                <FaEnvelope className="signup-input-icon" />
+                <input
+                  type="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  required
+                  disabled={loading}
+                  className="signup-input"
+                />
+              </div>
+            </div>
+
+            <div className="signup-input-group">
+              <label htmlFor="password">Password</label>
+              <div className="signup-input-wrapper">
+                <FaLock className="signup-input-icon" />
+                <input
+                  type="password"
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="At least 6 characters"
+                  required
+                  disabled={loading}
+                  className="signup-input"
+                />
+              </div>
+            </div>
+
+            <div className="signup-input-group">
+              <label htmlFor="confirmPassword">Confirm Password</label>
+              <div className="signup-input-wrapper">
+                <FaLock className="signup-input-icon" />
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder="Confirm your password"
+                  required
+                  disabled={loading}
+                  className="signup-input"
+                />
+              </div>
+            </div>
+
+            <button type="submit" className="signup-button" disabled={loading}>
+              <span>{loading ? 'Creating account...' : 'Create Account'}</span>
+              <FaCheckCircle className="signup-button-icon" />
+            </button>
+          </form>
+
+          <div className="signup-divider">
+            <span>Already have an account?</span>
           </div>
 
-          <div className="form-group">
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              id="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="At least 6 characters"
-              required
-              disabled={loading}
-            />
+          <Link to="/login" className="signup-login-link">
+            Sign in here
+          </Link>
+
+          <div className="signup-benefits">
+            <div className="signup-benefit">
+              <span className="signup-benefit-icon">💼</span>
+              <p>Professional Templates</p>
+            </div>
+            <div className="signup-benefit">
+              <span className="signup-benefit-icon">🤖</span>
+              <p>AI-Powered Suggestions</p>
+            </div>
+            <div className="signup-benefit">
+              <span className="signup-benefit-icon">⚡</span>
+              <p>Instant Generation</p>
+            </div>
           </div>
-
-          <div className="form-group">
-            <label htmlFor="confirmPassword">Confirm Password</label>
-            <input
-              type="password"
-              id="confirmPassword"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              placeholder="Confirm your password"
-              required
-              disabled={loading}
-            />
-          </div>
-
-          <button type="submit" className="auth-button" disabled={loading}>
-            {loading ? 'Creating account...' : 'Sign Up'}
-          </button>
-        </form>
-
-        <div className="auth-footer">
-          <p>
-            Already have an account?{' '}
-            <Link to="/login" className="auth-link">
-              Log in here
-            </Link>
-          </p>
         </div>
       </div>
     </div>

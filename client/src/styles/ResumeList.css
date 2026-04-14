@@ -6,7 +6,7 @@
   margin-bottom: 2rem;
   color: var(--text-dark);
   font-weight: 700;
-  background: var(--primary-gradient);
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -29,18 +29,22 @@
 
 .btn-create {
   display: inline-block;
-  background: var(--accent-gradient);
+  background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
   color: white;
-  padding: 0.75rem 2rem;
+  padding: 0.9rem 2.5rem;
   border-radius: 0.75rem;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   transition: all 0.3s ease;
+  font-size: 1.05rem;
+  box-shadow: 0 4px 14px rgba(6, 182, 212, 0.35);
+  letter-spacing: 0.3px;
 }
 
 .btn-create:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 30px rgba(79, 172, 254, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(6, 182, 212, 0.5);
+  background: linear-gradient(135deg, #06b6d4 0%, #0284c7 100%);
 }
 
 .resumes-grid {
@@ -74,8 +78,8 @@
 
 .resume-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
-  border-color: var(--primary-color);
+  box-shadow: 0 15px 40px rgba(37, 99, 235, 0.25);
+  border-color: #2563eb;
 }
 
 .resume-card-header {
@@ -125,41 +129,54 @@
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.6rem;
+  padding: 0.7rem;
   border-radius: 0.5rem;
   text-decoration: none;
   font-size: 0.85rem;
-  font-weight: 600;
   border: none;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
+.btn-view,
+.btn-edit,
+.btn-delete {
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
 .btn-view {
-  background-color: var(--primary-color);
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
   color: white;
 }
 
 .btn-view:hover {
-  background-color: #4f46e5;
+  background: linear-gradient(135deg, #1e53e5 0%, #1e40af 100%);
+  box-shadow: 0 6px 18px rgba(37, 99, 235, 0.4);
+  transform: translateY(-2px);
 }
 
 .btn-edit {
-  background-color: var(--warning-color);
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
   color: white;
 }
 
 .btn-edit:hover {
-  background-color: #d97706;
+  background: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+  box-shadow: 0 6px 18px rgba(245, 158, 11, 0.4);
+  transform: translateY(-2px);
 }
 
 .btn-delete {
-  background-color: var(--danger-color);
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
   color: white;
 }
 
 .btn-delete:hover {
-  background-color: #dc2626;
+  background: linear-gradient(135deg, #f87171 0%, #dc2626 100%);
+  box-shadow: 0 6px 18px rgba(239, 68, 68, 0.4);
+  transform: translateY(-2px);
 }
 
 @keyframes fadeIn {

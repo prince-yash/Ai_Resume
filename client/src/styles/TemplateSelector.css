@@ -28,7 +28,7 @@
   margin: 0;
   font-size: 18px;
   font-weight: 700;
-  background: var(--primary-gradient);
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -81,17 +81,17 @@
 
 .template-card:hover,
 .theme-card:hover {
-  border-color: var(--primary-color);
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+  border-color: #2563eb;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
   transform: translateY(-4px);
 }
 
 .template-card.active,
 .theme-card.active {
-  border-color: var(--primary-color);
-  background: linear-gradient(135deg, #eff6ff 0%, #f0e7ff 100%);
+  border-color: #2563eb;
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
   border-width: 2px;
-  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.25);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
 }
 
 .template-icon {

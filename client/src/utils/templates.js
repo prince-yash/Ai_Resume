@@ -39,32 +39,32 @@ export const RESUME_TEMPLATES = {
 
 export const THEME_COLORS = {
   blue: {
-    primary: '#667eea',
-    secondary: '#764ba2',
-    accent: '#42a5f5',
+    primary: '#2563eb',
+    secondary: '#1e40af',
+    accent: '#3b82f6',
     text: '#333'
   },
   green: {
-    primary: '#11998e',
-    secondary: '#38ef7d',
+    primary: '#16a34a',
+    secondary: '#15803d',
     accent: '#4caf50',
     text: '#333'
   },
   red: {
-    primary: '#eb3349',
-    secondary: '#f45c43',
+    primary: '#ef4444',
+    secondary: '#dc2626',
     accent: '#ef5350',
     text: '#333'
   },
   purple: {
-    primary: '#a8edea',
-    secondary: '#fed6e3',
+    primary: '#a855f7',
+    secondary: '#9333ea',
     accent: '#ab47bc',
     text: '#333'
   },
   gray: {
-    primary: '#2c3e50',
-    secondary: '#34495e',
+    primary: '#6b7280',
+    secondary: '#4b5563',
     accent: '#95a5a6',
     text: '#333'
   }

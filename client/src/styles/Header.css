@@ -29,7 +29,7 @@
   font-weight: 800;
   letter-spacing: -0.5px;
   margin: 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -68,16 +68,17 @@
 }
 
 .nav-link.primary {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
   border: none;
   color: white;
   font-weight: 700;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+  letter-spacing: 0.3px;
 }
 
 .nav-link.primary:hover {
-  background: linear-gradient(135deg, #7c89e8 0%, #8556b9 100%);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #1e53e5 0%, #1e40af 100%);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.5);
   transform: translateY(-3px);
 }
 
@@ -104,16 +105,18 @@
 
 .primary-auth,
 .primary-auth:visited {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
   border: none;
   color: white;
   font-weight: 700;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
+  letter-spacing: 0.3px;
 }
 
 .primary-auth:hover {
-  background: linear-gradient(135deg, #7c89e8 0%, #8556b9 100%);
-  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #1e53e5 0%, #1e40af 100%);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.5);
+  transform: translateY(-3px);
 }
 
 .user-section {
@@ -138,24 +141,25 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  background: #fee2e2;
-  border: 1.5px solid #fecaca;
-  color: #991b1b;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  border: 1.5px solid #fca5a5;
+  color: white;
   cursor: pointer;
-  padding: 0.65rem 1.3rem;
+  padding: 0.7rem 1.4rem;
   border-radius: 0.6rem;
   transition: all 0.3s ease;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 1rem;
   white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(239, 68, 68, 0.3);
+  letter-spacing: 0.3px;
 }
 
 .logout-link:hover {
-  background: #fca5a5;
-  border-color: #f87171;
-  color: white;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(239, 68, 68, 0.3);
+  background: linear-gradient(135deg, #f87171 0%, #dc2626 100%);
+  border-color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(239, 68, 68, 0.45);
 }
 
 @media (max-width: 768px) {

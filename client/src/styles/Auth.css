@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
   padding: 20px;
   position: relative;
   overflow: hidden;
@@ -101,8 +101,8 @@
 
 .form-group input:focus {
   outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1);
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
   transform: translateY(-2px);
 }
 
@@ -130,26 +130,34 @@
 
 .auth-button {
   width: 100%;
-  padding: 12px;
-  background: var(--primary-gradient);
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
   color: white;
   border: none;
   border-radius: 0.75rem;
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 10px;
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+  letter-spacing: 0.3px;
 }
 
 .auth-button:hover:not(:disabled) {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(30, 64, 175, 0.5);
+  background: linear-gradient(135deg, #1e53e5 0%, #1e40af 100%);
+}
+
+.auth-button:active:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
 }
 
 .auth-button:disabled {
-  opacity: 0.7;
+  opacity: 0.6;
   cursor: not-allowed;
+  box-shadow: none;
 }
 
 .auth-footer {
@@ -165,14 +173,14 @@
 }
 
 .auth-link {
-  color: #667eea;
+  color: #2563eb;
   text-decoration: none;
   font-weight: 600;
   transition: color 0.3s ease;
 }
 
 .auth-link:hover {
-  color: #764ba2;
+  color: #1e40af;
   text-decoration: underline;
 }
 
