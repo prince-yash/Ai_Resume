@@ -9,12 +9,18 @@ const errorHandler = require('./middlewares/errorHandler');
 const app = express();
 
 // Middleware
-const clientUrl = process.env.CLIENT_URL?.replace(/\/$/, ''); // Remove trailing slash
+const clientUrl = process.env.CLIENT_URL?.replace(/\/$/, '');
+const configuredOrigins = (process.env.CORS_ORIGINS || '')
+  .split(',')
+  .map((origin) => origin.trim().replace(/\/$/, ''))
+  .filter(Boolean);
 const allowedOrigins = [
   'https://ai-resume-1-g435.onrender.com',
   clientUrl,
+  ...configuredOrigins,
   'http://localhost:3000',
-  'http://localhost:5000'
+  'http://localhost:5000',
+  'http://localhost:5173'
 ].filter(Boolean);
 
 console.log('✅ CORS allowed origins:', allowedOrigins);
@@ -22,8 +28,9 @@ console.log('📝 CLIENT_URL env var:', process.env.CLIENT_URL);
 
 app.use(cors({
   origin: (origin, callback) => {
-    console.log('🔍 Incoming request origin:', origin);
-    if (!origin || allowedOrigins.includes(origin)) {
+    const normalizedOrigin = origin?.replace(/\/$/, '');
+    console.log('🔍 Incoming request origin:', normalizedOrigin);
+    if (!normalizedOrigin || allowedOrigins.includes(normalizedOrigin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));

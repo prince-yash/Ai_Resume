@@ -10,6 +10,22 @@ const api = axios.create({
   }
 });
 
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
+
+const formatApiError = (error, fallbackMessage) => {
+  const message =
+    error.response?.data?.message ||
+    error.response?.data?.error ||
+    error.message ||
+    fallbackMessage;
+  return new Error(message);
+};
 // Resume API endpoints
 export const resumeService = {
   // Create a new resume
@@ -19,7 +35,7 @@ export const resumeService = {
       return response.data.data;
     } catch (error) {
       console.error('Error creating resume:', error);
-      throw error;
+      throw formatApiError(error, 'Error creating resume');
     }
   },
 
@@ -30,7 +46,7 @@ export const resumeService = {
       return response.data.data;
     } catch (error) {
       console.error('Error fetching resumes:', error);
-      throw error;
+      throw formatApiError(error, 'Error fetching resumes');
     }
   },
 
@@ -41,7 +57,7 @@ export const resumeService = {
       return response.data.data;
     } catch (error) {
       console.error('Error fetching resume:', error);
-      throw error;
+      throw formatApiError(error, 'Error fetching resume');
     }
   },
 
@@ -52,7 +68,7 @@ export const resumeService = {
       return response.data.data;
     } catch (error) {
       console.error('Error updating resume:', error);
-      throw error;
+      throw formatApiError(error, 'Error updating resume');
     }
   },
 
@@ -63,7 +79,7 @@ export const resumeService = {
       return true;
     } catch (error) {
       console.error('Error deleting resume:', error);
-      throw error;
+      throw formatApiError(error, 'Error deleting resume');
     }
   }
 };

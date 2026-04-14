@@ -35,17 +35,34 @@ function ResumeTemplate({ resume, template = 'modern', theme = 'blue' }) {
         </div>
       </div>
 
-      {/* Professional Summary */}
+      {/* AI-Generated Career Highlight */}
+      {resume.careerHighlight && (
+        <div style={{ 
+          ...sectionStyle,
+          background: styles.sectionTitle?.color,
+          color: 'white',
+          padding: '15px',
+          borderRadius: '5px',
+          fontStyle: 'italic',
+          marginBottom: '20px'
+        }}>
+          <p style={{ margin: '0', lineHeight: '1.5', fontSize: '14px', fontWeight: '500' }}>
+            {resume.careerHighlight}
+          </p>
+        </div>
+      )}
+
+      {/* Professional Summary - AI Generated */}
       {(resume.professionalSummary || opt.summary) && (
         <section style={sectionStyle}>
           <h2 style={sectionTitleStyle}>Professional Summary</h2>
-          <p style={{ lineHeight: '1.6', margin: '0' }}>
+          <p style={{ lineHeight: '1.6', margin: '0', fontSize: '14px' }}>
             {resume.professionalSummary || opt.summary}
           </p>
         </section>
       )}
 
-      {/* Skills */}
+      {/* Skills - AI Enhanced */}
       {(opt.skills?.length > 0 || resume.skills?.length > 0) && (
         <section style={sectionStyle}>
           <h2 style={sectionTitleStyle}>Skills</h2>
@@ -70,35 +87,39 @@ function ResumeTemplate({ resume, template = 'modern', theme = 'blue' }) {
         </section>
       )}
 
-      {/* Experience */}
+      {/* Work Experience - AI Generated Descriptions */}
       {(opt.experience?.length > 0 || resume.experience?.length > 0) && (
         <section style={sectionStyle}>
           <h2 style={sectionTitleStyle}>Work Experience</h2>
           <div className="template-experience">
-            {opt.experience?.map((exp, i) => (
-              <div key={i} style={{ marginBottom: '15px', lineHeight: '1.6' }}>
-                <p style={{ margin: '0', fontSize: '13px' }}>• {exp}</p>
-              </div>
-            ))}
-            {!opt.experience?.length &&
+            {opt.experience?.length > 0 ? (
+              opt.experience.map((exp, i) => (
+                <div key={i} style={{ marginBottom: '18px', lineHeight: '1.7' }}>
+                  <p style={{ margin: '0', fontSize: '14px', fontWeight: '600', color: styles.sectionTitle?.color }}>
+                    • {exp}
+                  </p>
+                </div>
+              ))
+            ) : (
               resume.experience?.map((exp, i) =>
                 exp.company && (
-                  <div key={i} style={{ marginBottom: '15px' }}>
+                  <div key={i} style={{ marginBottom: '18px' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '5px' }}>
                       <h3 style={{ margin: '0', fontSize: '15px', fontWeight: '600' }}>
                         {exp.position}
                       </h3>
                       <span style={{ fontSize: '13px', color: '#666' }}>{exp.duration}</span>
                     </div>
-                    <p style={{ margin: '3px 0', fontSize: '13px', fontWeight: '500', color: '#555' }}>
+                    <p style={{ margin: '3px 0 8px 0', fontSize: '14px', fontWeight: '500', color: '#555' }}>
                       {exp.company}
                     </p>
-                    <p style={{ margin: '5px 0 0 0', fontSize: '13px', lineHeight: '1.5' }}>
+                    <p style={{ margin: '0', fontSize: '13px', lineHeight: '1.6', color: '#444' }}>
                       {exp.description}
                     </p>
                   </div>
                 )
-              )}
+              )
+            )}
           </div>
         </section>
       )}
@@ -127,20 +148,23 @@ function ResumeTemplate({ resume, template = 'modern', theme = 'blue' }) {
         </section>
       )}
 
-      {/* Projects */}
+      {/* Projects - AI Enhanced */}
       {(opt.projects?.length > 0 || resume.projects?.length > 0) && (
         <section style={sectionStyle}>
           <h2 style={sectionTitleStyle}>Projects</h2>
           <div className="template-projects">
-            {opt.projects?.map((proj, i) => (
-              <div key={i} style={{ marginBottom: '12px', fontSize: '13px', lineHeight: '1.5' }}>
-                <p style={{ margin: '0' }}>• {proj}</p>
-              </div>
-            ))}
-            {!opt.projects?.length &&
+            {opt.projects?.length > 0 ? (
+              opt.projects.map((proj, i) => (
+                <div key={i} style={{ marginBottom: '15px', fontSize: '13px', lineHeight: '1.6' }}>
+                  <p style={{ margin: '0 0 5px 0', fontWeight: '600', color: styles.sectionTitle?.color }}>
+                    • {proj}
+                  </p>
+                </div>
+              ))
+            ) : (
               resume.projects?.map((proj, i) =>
                 proj.title && (
-                  <div key={i} style={{ marginBottom: '12px' }}>
+                  <div key={i} style={{ marginBottom: '15px' }}>
                     <h3 style={{ margin: '0 0 3px 0', fontSize: '14px', fontWeight: '600' }}>
                       {proj.title}
                     </h3>
@@ -154,19 +178,48 @@ function ResumeTemplate({ resume, template = 'modern', theme = 'blue' }) {
                     )}
                   </div>
                 )
-              )}
+              )
+            )}
           </div>
         </section>
       )}
 
-      {/* Highlights */}
-      {resume.experienceHighlights?.length > 0 && (
+      {/* Additional Highlights - AI Generated */}
+      {opt.additionalHighlights?.length > 0 && (
         <section style={sectionStyle}>
-          <h2 style={sectionTitleStyle}>Highlights</h2>
+          <h2 style={sectionTitleStyle}>Key Achievements</h2>
+          <ul style={{ margin: '0', paddingLeft: '20px', lineHeight: '1.6' }}>
+            {opt.additionalHighlights.map((highlight, i) => (
+              <li key={i} style={{ marginBottom: '8px', fontSize: '13px' }}>
+                {highlight}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {/* Experience Highlights */}
+      {resume.experienceHighlights?.length > 0 && !opt.additionalHighlights?.length && (
+        <section style={sectionStyle}>
+          <h2 style={sectionTitleStyle}>Key Highlights</h2>
           <ul style={{ margin: '0', paddingLeft: '20px', lineHeight: '1.6' }}>
             {resume.experienceHighlights.map((highlight, i) => (
               <li key={i} style={{ marginBottom: '5px', fontSize: '13px' }}>
                 {highlight}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {/* Certifications - AI Generated */}
+      {opt.certifications?.length > 0 && (
+        <section style={sectionStyle}>
+          <h2 style={sectionTitleStyle}>Certifications</h2>
+          <ul style={{ margin: '0', paddingLeft: '20px', lineHeight: '1.6' }}>
+            {opt.certifications.map((cert, i) => (
+              <li key={i} style={{ marginBottom: '5px', fontSize: '13px' }}>
+                {cert}
               </li>
             ))}
           </ul>

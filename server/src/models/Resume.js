@@ -46,6 +46,7 @@ const resumeSchema = new Schema(
     experience: { type: [experienceSchema], default: [] },
     projects: { type: [projectSchema], default: [] },
     professionalSummary: { type: String, trim: true },
+    careerHighlight: { type: String, trim: true },
     experienceHighlights: { type: [{ type: String }], default: [] },
     template: {
       type: String,
